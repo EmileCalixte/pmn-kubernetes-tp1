@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: wordpressweb
+  name: wordpressweb
+spec:
+  containers:
+    - image: wordpress
+      name: wordpressweb
+      ports:
+        - containerPort: 8080
+      env:
+        - name: WORDPRESS_DB_HOST
+          value: db
+        - name: WORDPRESS_DB_USER
+          value: exampleuser
+        - name: WORDPRESS_DB_PASSWORD
+          value: examplepass
+        - name: WORDPRESS_DB_NAME
+          value: exampledb
