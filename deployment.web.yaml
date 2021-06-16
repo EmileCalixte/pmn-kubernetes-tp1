@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - image: wordpress
-          name: wordpress
+          name: web
           ports:
             - containerPort: 80
           env:
