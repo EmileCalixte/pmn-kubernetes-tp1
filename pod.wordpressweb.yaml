@@ -10,7 +10,7 @@ spec:
     - image: wordpress
       name: wordpressweb
       ports:
-        - containerPort: 8080
+        - containerPort: 80
       env:
         - name: WORDPRESS_DB_HOST
           value: db
