@@ -3,8 +3,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: web
-  name: web
+    app: wp-app
+  name: wp-app
 spec:
   ports:
     - nodePort: 31023
@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       targetPort: 80
   selector:
-    app: web
+    app: wp-app
   type: NodePort
