@@ -2,29 +2,41 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: web
-  name: web
+    app: wp-app
+  name: wp-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: web
+      app: wp-app
   template:
     metadata:
       labels:
-        app: web
+        app: wp-app
     spec:
       containers:
         - image: wordpress
-          name: web
+          name: wp-app
           ports:
             - containerPort: 80
           env:
             - name: WORDPRESS_DB_HOST
-              value: db
+              valueFrom:
+                configMapKeyRef:
+                  name: blog-config
+                  key: BLOG_DB_HOST
             - name: WORDPRESS_DB_USER
-              value: exampleuser
+              valueFrom:
+                configMapKeyRef:
+                  name: blog-config
+                  key: BLOG_DB_USERNAME
             - name: WORDPRESS_DB_PASSWORD
-              value: examplepass
+              valueFrom:
+                configMapKeyRef:
+                  name: blog-config
+                  key: BLOG_DB_PASSWORD
             - name: WORDPRESS_DB_NAME
-              value: exampledb
+              valueFrom:
+                configMapKeyRef:
+                  name: blog-config
+                  key: BLOG_DB_NAME
