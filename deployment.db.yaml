@@ -35,3 +35,10 @@ spec:
                   key: BLOG_DB_PASSWORD
             - name: MYSQL_RANDOM_ROOT_PASSWORD
               value: "1"
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: wpdb-data
+      volumes:
+        - name: wpdb-data
+          persistentVolumeClaim:
+            claimName: wpdb-data

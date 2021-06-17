@@ -40,3 +40,10 @@ spec:
                 configMapKeyRef:
                   name: blog-config
                   key: BLOG_DB_NAME
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: wpapp-data
+      volumes:
+        - name: wpapp-data
+          persistentVolumeClaim:
+            claimName: wpapp-data
